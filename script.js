@@ -7,7 +7,8 @@ class Node {
 class Hashmap {
   constructor() {
     this.buckets = [];
-    this.bucketSize = [];
+    this.buckets.length=16
+
     // this.loadFactor=0.75
     // this.product=this.bucketSize*this.loadFactor
   }
@@ -23,21 +24,22 @@ class Hashmap {
     return hashCode;
   }
   set(key, value) {
-    let hashCode = this.hash(key);
-    let node = new Node(key.value);
-    this.buckets[hashCode] = node;
-    console.log(this.buckets)
+    let index = this.hash(key);
+    console.log(index)
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bound");
+    } else {
+      let node = new Node(key,value);
+      this.buckets[index] = node;
+      console.log(this.buckets)
+    }
+
+    console.log(this.buckets);
     // console.log(hashCode);
-    // let index = hash(key);
-    // console.log(index);
-    // if (index < 0 || index >= bucket.length) {
-    // throw new Error("Trying to access index out of bound");
-    // }
   }
 }
 L = new Hashmap();
-L.hash("hello");
-L.hash("edla");
+
 L.set("edla", "value");
 // L.hash("leda");
 // L.hash("lead")
