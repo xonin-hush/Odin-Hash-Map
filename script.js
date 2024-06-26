@@ -24,8 +24,9 @@ class Hashmap {
     for (let i = 0; i < key.length; i++) {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
 
-      hashCode = hashCode % 16;
+      hashCode = hashCode % this.buckets.length;
     }
+    console.log(hashCode);
     return hashCode;
   }
 
@@ -39,14 +40,11 @@ class Hashmap {
 
       if (this.buckets[index] == undefined) {
         this.buckets[index] = new LinkedList(node);
-        console.log(this.buckets[index].head.key)
-        console.log(0)
       } else {
         if (
           this.buckets[index].head.value == node.value &&
           this.buckets[index].head.key == node.key
         ) {
-          console.log(1)
           return;
         } else {
           if (
@@ -54,29 +52,72 @@ class Hashmap {
             this.buckets[index].head.value != node.value
           ) {
             this.buckets[index].head = node;
-            console.log(2)
           }
 
           if (this.buckets[index].head.key != node.key) {
             this.buckets[index].head.next = node;
-            // console.log(this.buckets[1].value)
-            // console.log(this.buckets[index].key,node.key)
-            console.log(3)
-            console.log("done")
           }
         }
       }
     }
-    console.log(this.buckets)
+    // console.log(this.buckets)
+  }
+  checkSize() {
+    let counter = 0;
+    for (let item in this.buckets) {
+      counter++;
+    }
+    if (this.buckets.length * this.loadFactor < counter) {
+      this.buckets.length = this.buckets.length * 2;
+      //grow buckets
+      console.log("grow");
+    } else {
+      console.log("don't grow");
+    }
+    console.log(counter);
+    console.log(this.buckets.length * this.loadFactor);
+    console.log(this.buckets.length);
   }
 }
 L = new Hashmap();
-// L.hash("leda");
-// L.hash("lead")
+
 L.set("hi", "value");
+L.set("hdd", "value");
 L.set("hi", "value");
 L.set("ih", "value");
-
-L.set("hello","bas")
+L.set("hello", "bas");
 L.set("hi","not same value")
-
+L.set("Carlos", "this is one");
+L.set("Carla", "this is two");
+L.set("apple", "red");
+L.set("banana", "yellow");
+L.set("carrot", "orange");
+L.set("dog", "brown");
+L.set("elephant", "gray");
+L.set("frog", "green");
+L.set("grape", "purple");
+L.set("hat", "black");
+L.set("ice cream", "white");
+L.set("jacket", "blue");
+L.set("kite", "pink");
+L.set("lion", "golden");
+L.checkSize();
+L.checkSize();
+// L.hash("hi", "value");
+// L.hash("hdd", "value");
+// L.hash("ih", "value");
+// L.hash("hello", "bas");
+// L.hash("Carlos", "this is one");
+// L.hash("Carla", "this is two");
+// L.hash("apple", "red");
+// L.hash("banana", "yellow");
+// L.hash("carrot", "orange");
+// L.hash("dog", "brown");
+// L.hash("elephant", "gray");
+// L.hash("frog", "green");
+// L.hash("grape", "purple");
+// L.hash("hat", "black");
+// L.hash("ice cream", "white");
+// L.hash("jacket", "blue");
+// L.hash("kite", "pink");
+// L.hash("lion", "golden");

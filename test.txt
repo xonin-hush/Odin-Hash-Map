@@ -1,0 +1,26 @@
+// L.hash("leda");
+// L.hash("lead")
+L.hash("hi", "value");
+L.hash("hdd", "value");
+
+// L.hash("hi", "value");
+L.hash("ih", "value");
+L.hash("hello", "bas");
+// L.hash("hi","not same value")
+L.hash("Carlos", "this is one");
+L.hash("Carla", "this is two");
+L.hash("apple", "red");
+L.hash("banana", "yellow");
+L.hash("carrot", "orange");
+L.hash("dog", "brown");
+L.hash("elephant", "gray");
+L.hash("frog", "green");
+L.hash("grape", "purple");
+L.hash("hat", "black");
+L.hash("ice cream", "white");
+L.hash("jacket", "blue");
+L.hash("kite", "pink");
+L.hash("lion", "golden");
+L.checkSize();
+L.checkSize();
+//////////////
