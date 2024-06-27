@@ -32,7 +32,7 @@ class Hashmap {
 
   set(key, value) {
     let index = this.hash(key);
-
+    this.checkSize();
     if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bound");
     } else {
@@ -75,18 +75,44 @@ class Hashmap {
       console.log("don't grow");
     }
     console.log(counter);
-    console.log(this.buckets.length * this.loadFactor);
     console.log(this.buckets.length);
+  }
+
+  get(key) {
+    let temp = "";
+    for (let i in this.buckets) {
+      temp = this.buckets[i].head;
+      if (temp.key == key) {
+        console.log(temp.value);
+        return;
+      } else {
+        while (temp.next != null) {
+          // console.log("there is a next");
+          temp = temp.next;
+          if (temp.key == key) {
+            console.log(temp.value);
+            return;
+          }
+        }
+      }
+    }
+    console.log("null");
+  }
+  showCount() {
+    console.log(this.buckets);
+    for (let i in this.buckets) {
+      console.log(this.buckets[i].head);
+    }
   }
 }
 L = new Hashmap();
 
-L.set("hi", "value");
+// L.set("hi", "value");
 L.set("hdd", "value");
 L.set("hi", "value");
 L.set("ih", "value");
 L.set("hello", "bas");
-L.set("hi","not same value")
+// L.set("hi", "not same value");
 L.set("Carlos", "this is one");
 L.set("Carla", "this is two");
 L.set("apple", "red");
@@ -101,8 +127,9 @@ L.set("ice cream", "white");
 L.set("jacket", "blue");
 L.set("kite", "pink");
 L.set("lion", "golden");
-L.checkSize();
-L.checkSize();
+//18
+L.get("");
+// L.showCount();
 // L.hash("hi", "value");
 // L.hash("hdd", "value");
 // L.hash("ih", "value");
