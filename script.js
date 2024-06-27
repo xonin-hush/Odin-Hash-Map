@@ -1,3 +1,5 @@
+const { stat } = require("fs");
+
 class LinkedList {
   constructor(head) {
     this.head = head;
@@ -26,7 +28,6 @@ class Hashmap {
 
       hashCode = hashCode % this.buckets.length;
     }
-    console.log(hashCode);
     return hashCode;
   }
 
@@ -69,7 +70,7 @@ class Hashmap {
     if (this.buckets.length * this.loadFactor < counter) {
       this.buckets.length = this.buckets.length * 2;
       console.log("buckets doubled");
-    } 
+    }
   }
 
   get(key) {
@@ -91,7 +92,7 @@ class Hashmap {
     }
     console.log("null");
   }
-  has(key){
+  has(key) {
     let temp = "";
     for (let i in this.buckets) {
       temp = this.buckets[i].head;
@@ -110,21 +111,52 @@ class Hashmap {
     }
     console.log("False");
   }
-  showCount() {
-    console.log(this.buckets);
+  remove(key) {
+    let temp = "";
+    let temp2 = "";
     for (let i in this.buckets) {
-      console.log(this.buckets[i].head);
+      temp = this.buckets[i].head;
+      if (temp.key == key) {
+        this.buckets[i].head = temp.next;
+        console.log("True");
+        return;
+      } else {
+        while (temp.next != null) {
+          temp2 = temp;
+          temp = temp.next;
+          if (temp.key == key) {
+            temp2.next = temp.next;
+            console.log("True");
+            return;
+          }
+        }
+      }
     }
+    console.log("False");
+  }
+  printMapKey() {
+    let string = "";
+    let template = "";
+    let temp = "";
+    for (let i in this.buckets) {
+      temp = this.buckets[i].head;
+      template = `${temp.key} ===> `;
+      string = string + template;
+      while (temp.next != null) {
+        temp = temp.next;
+        template = `${temp.key} ===> `;
+        string = string + template;
+      }
+    }
+    console.log(string);
   }
 }
 L = new Hashmap();
 
-// L.set("hi", "value");
 L.set("hdd", "value");
 L.set("hi", "value");
 L.set("ih", "value");
 L.set("hello", "bas");
-// L.set("hi", "not same value");
 L.set("Carlos", "this is one");
 L.set("Carla", "this is two");
 L.set("apple", "red");
@@ -140,4 +172,5 @@ L.set("jacket", "blue");
 L.set("kite", "pink");
 L.set("lion", "golden");
 //18
-L.get("lion");
+// L.get("lion");
+L.showCount();
