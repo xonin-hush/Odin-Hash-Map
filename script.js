@@ -60,7 +60,6 @@ class Hashmap {
         }
       }
     }
-    // console.log(this.buckets)
   }
   checkSize() {
     let counter = 0;
@@ -69,7 +68,6 @@ class Hashmap {
     }
     if (this.buckets.length * this.loadFactor < counter) {
       this.buckets.length = this.buckets.length * 2;
-      //grow buckets
       console.log("buckets doubled");
     } 
   }
@@ -92,6 +90,25 @@ class Hashmap {
       }
     }
     console.log("null");
+  }
+  has(key){
+    let temp = "";
+    for (let i in this.buckets) {
+      temp = this.buckets[i].head;
+      if (temp.key == key) {
+        console.log("True");
+        return;
+      } else {
+        while (temp.next != null) {
+          temp = temp.next;
+          if (temp.key == key) {
+            console.log("True");
+            return;
+          }
+        }
+      }
+    }
+    console.log("False");
   }
   showCount() {
     console.log(this.buckets);
@@ -123,23 +140,4 @@ L.set("jacket", "blue");
 L.set("kite", "pink");
 L.set("lion", "golden");
 //18
-L.get("");
-// L.showCount();
-// L.hash("hi", "value");
-// L.hash("hdd", "value");
-// L.hash("ih", "value");
-// L.hash("hello", "bas");
-// L.hash("Carlos", "this is one");
-// L.hash("Carla", "this is two");
-// L.hash("apple", "red");
-// L.hash("banana", "yellow");
-// L.hash("carrot", "orange");
-// L.hash("dog", "brown");
-// L.hash("elephant", "gray");
-// L.hash("frog", "green");
-// L.hash("grape", "purple");
-// L.hash("hat", "black");
-// L.hash("ice cream", "white");
-// L.hash("jacket", "blue");
-// L.hash("kite", "pink");
-// L.hash("lion", "golden");
+L.get("lion");
