@@ -70,12 +70,8 @@ class Hashmap {
     if (this.buckets.length * this.loadFactor < counter) {
       this.buckets.length = this.buckets.length * 2;
       //grow buckets
-      console.log("grow");
-    } else {
-      console.log("don't grow");
-    }
-    console.log(counter);
-    console.log(this.buckets.length);
+      console.log("buckets doubled");
+    } 
   }
 
   get(key) {
@@ -87,7 +83,6 @@ class Hashmap {
         return;
       } else {
         while (temp.next != null) {
-          // console.log("there is a next");
           temp = temp.next;
           if (temp.key == key) {
             console.log(temp.value);
