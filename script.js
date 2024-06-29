@@ -130,8 +130,6 @@ class Hashmap {
           return;
         }
         while (temp.next != null) {
-          console.log(temp);
-          console.log(temp2);
           if (temp.next.key == key) {
             temp.next = temp.next.next;
             console.log("True");
