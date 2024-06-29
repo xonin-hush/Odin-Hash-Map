@@ -159,7 +159,7 @@ class Hashmap {
     }
     console.log(string);
   }
-  length(){
+  length() {
     let temp = "";
     let counter = 0;
     for (let i in this.buckets) {
@@ -172,12 +172,24 @@ class Hashmap {
     }
     console.log(counter);
   }
-  clear(){
-    for (let i in this.buckets){
-      this.buckets[i].head=null
-
+  keys() {
+    let keysArray = [];
+    let temp = "";
+    for (let i in this.buckets) {
+      temp = this.buckets[i].head;
+      keysArray.push(temp.key);
+      while (temp.next != null) {
+        temp = temp.next;
+        keysArray.push(temp.key);
+      }
     }
-    console.log(this.buckets)
+    console.log(keysArray);
+  }
+  clear() {
+    for (let i in this.buckets) {
+      this.buckets[i].head = null;
+    }
+    console.log(this.buckets);
   }
 }
 L = new Hashmap();
@@ -220,6 +232,7 @@ L.set("lion", "golden");
 
 // L.printMapKey();
 
-L.length()
-L.clear()
+L.length();
+// L.clear();
+L.keys()
 // L.printMapKey()
