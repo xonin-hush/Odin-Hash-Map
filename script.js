@@ -170,6 +170,7 @@ class Hashmap {
         counter++;
       }
     }
+    console.log("Length Is:")
     console.log(counter);
   }
   keys() {
@@ -183,6 +184,7 @@ class Hashmap {
         keysArray.push(temp.key);
       }
     }
+    console.log("Your Keys are:")
     console.log(keysArray);
   }
   values() {
@@ -196,13 +198,29 @@ class Hashmap {
         valuesArray.push(temp.value);
       }
     }
+    console.log("Your Values are:")
     console.log(valuesArray);
   }
   clear() {
     for (let i in this.buckets) {
       this.buckets[i].head = null;
     }
+    console.log("Entries Cleared")
     console.log(this.buckets);
+  }
+  entries() {
+    let mainArray = [];
+    let temp = "";
+    for (let i in this.buckets) {
+      temp = this.buckets[i].head;
+      mainArray.push([this.buckets[i].head.key, this.buckets[i].head.value]);
+      while (temp.next != null) {
+        temp = temp.next;
+        mainArray.push([this.buckets[i].head.key, this.buckets[i].head.value]);
+      }
+    }
+    console.log("Your Entries are:")
+    console.log(mainArray);
   }
 }
 L = new Hashmap();
@@ -247,6 +265,7 @@ L.set("lion", "golden");
 
 L.length();
 // L.clear();
-L.keys()
-L.values()
+L.keys();
+L.values();
+L.entries();
 // L.printMapKey()
