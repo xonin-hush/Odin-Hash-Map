@@ -1,17 +1,17 @@
-const { stat } = require("fs");
-
 class LinkedList {
   constructor(head) {
     this.head = head;
     this.next = null;
   }
 }
+
 class Node {
   constructor(key, value) {
     this.key = key;
     this.value = value;
   }
 }
+
 class Hashmap {
   constructor() {
     this.buckets = [];
@@ -25,7 +25,6 @@ class Hashmap {
     const primeNumber = 31;
     for (let i = 0; i < key.length; i++) {
       hashCode = primeNumber * hashCode + key.charCodeAt(i);
-
       hashCode = hashCode % this.buckets.length;
     }
     return hashCode;
@@ -62,6 +61,7 @@ class Hashmap {
       }
     }
   }
+
   checkSize() {
     let counter = 0;
     for (let item in this.buckets) {
@@ -92,6 +92,7 @@ class Hashmap {
     }
     console.log("null");
   }
+
   has(key) {
     let temp = "";
     for (let i in this.buckets) {
@@ -111,12 +112,9 @@ class Hashmap {
     }
     console.log("False");
   }
+
   remove(key) {
     let temp = "";
-    let temp2 = "";
-    // if(this.buckets.head.key==key){
-    // this.buckets.head=this.
-    // }
     for (let i in this.buckets) {
       temp = this.buckets[i].head;
       if (temp.key == key && temp.next == null) {
@@ -133,16 +131,15 @@ class Hashmap {
           if (temp.next.key == key) {
             temp.next = temp.next.next;
             console.log("True");
-
             return;
           }
-          temp2 = temp;
           temp = temp.next;
         }
       }
     }
     console.log("False");
   }
+
   printMapKey() {
     let string = "";
     let template = "";
@@ -159,6 +156,7 @@ class Hashmap {
     }
     console.log(string);
   }
+
   length() {
     let temp = "";
     let counter = 0;
@@ -170,9 +168,10 @@ class Hashmap {
         counter++;
       }
     }
-    console.log("Length Is:")
+    console.log("Length Is:");
     console.log(counter);
   }
+
   keys() {
     let keysArray = [];
     let temp = "";
@@ -184,9 +183,10 @@ class Hashmap {
         keysArray.push(temp.key);
       }
     }
-    console.log("Your Keys are:")
+    console.log("Your Keys are:");
     console.log(keysArray);
   }
+
   values() {
     let valuesArray = [];
     let temp = "";
@@ -198,16 +198,18 @@ class Hashmap {
         valuesArray.push(temp.value);
       }
     }
-    console.log("Your Values are:")
+    console.log("Your Values are:");
     console.log(valuesArray);
   }
+
   clear() {
     for (let i in this.buckets) {
       this.buckets[i].head = null;
     }
-    console.log("Entries Cleared")
+    console.log("Entries Cleared");
     console.log(this.buckets);
   }
+
   entries() {
     let mainArray = [];
     let temp = "";
@@ -219,12 +221,11 @@ class Hashmap {
         mainArray.push([this.buckets[i].head.key, this.buckets[i].head.value]);
       }
     }
-    console.log("Your Entries are:")
+    console.log("Your Entries are:");
     console.log(mainArray);
   }
 }
 L = new Hashmap();
-
 L.set("banana", "yellow");
 L.set("jacket", "blue");
 L.set("hdd", "value");
@@ -244,28 +245,3 @@ L.set("ice cream", "white");
 L.set("kite", "pink");
 L.set("lion", "golden");
 //18
-// L.get("lion");
-// L.remove("hello");
-// L.remove("hi");
-// L.remove("ih"); //fine
-// L.remove("hi"); //fine
-// L.remove("kite"); //fine
-// L.remove("grape"); //fine
-// L.remove("elephant"); //fine
-// L.remove("hat"); //fine
-// L.remove("dog"); //fine
-// L.remove("Carlos"); //fine
-// L.remove("jacket"); //fine
-// L.remove("ice cream"); //fine
-// L.remove("apple");
-// L.remove("lion");
-// L.remove("something");
-
-// L.printMapKey();
-
-L.length();
-// L.clear();
-L.keys();
-L.values();
-L.entries();
-// L.printMapKey()
