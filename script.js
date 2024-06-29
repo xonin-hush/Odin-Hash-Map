@@ -172,6 +172,13 @@ class Hashmap {
     }
     console.log(counter);
   }
+  clear(){
+    for (let i in this.buckets){
+      this.buckets[i].head=null
+
+    }
+    console.log(this.buckets)
+  }
 }
 L = new Hashmap();
 
@@ -195,21 +202,24 @@ L.set("kite", "pink");
 L.set("lion", "golden");
 //18
 // L.get("lion");
-L.remove("hello");
-L.remove("hi");
-L.remove("ih"); //fine
-L.remove("hi"); //fine
-L.remove("kite"); //fine
-L.remove("grape"); //fine
-L.remove("elephant"); //fine
-L.remove("hat"); //fine
-L.remove("dog"); //fine
-L.remove("Carlos"); //fine
-L.remove("jacket"); //not fine, so nodes that don't have a next node can't be deleted
-L.remove("ice cream"); //fine
-L.remove("apple");
-L.remove("lion");
-L.remove("something");
+// L.remove("hello");
+// L.remove("hi");
+// L.remove("ih"); //fine
+// L.remove("hi"); //fine
+// L.remove("kite"); //fine
+// L.remove("grape"); //fine
+// L.remove("elephant"); //fine
+// L.remove("hat"); //fine
+// L.remove("dog"); //fine
+// L.remove("Carlos"); //fine
+// L.remove("jacket"); //fine
+// L.remove("ice cream"); //fine
+// L.remove("apple");
+// L.remove("lion");
+// L.remove("something");
 
 // L.printMapKey();
+
 L.length()
+L.clear()
+// L.printMapKey()
