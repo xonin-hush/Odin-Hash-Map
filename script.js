@@ -147,21 +147,29 @@ class Hashmap {
     let string = "";
     let template = "";
     let temp = "";
-    let counter = 0;
     for (let i in this.buckets) {
       temp = this.buckets[i].head;
       template = `${temp.key} ===> `;
       string = string + template;
-      counter++;
       while (temp.next != null) {
         temp = temp.next;
         template = `${temp.key} ===> `;
         string = string + template;
+      }
+    }
+    console.log(string);
+  }
+  length(){
+    let temp = "";
+    let counter = 0;
+    for (let i in this.buckets) {
+      temp = this.buckets[i].head;
+      counter++;
+      while (temp.next != null) {
+        temp = temp.next;
         counter++;
       }
     }
-    // console.log(this.buckets);
-    console.log(string);
     console.log(counter);
   }
 }
@@ -203,4 +211,5 @@ L.remove("apple");
 L.remove("lion");
 L.remove("something");
 
-L.printMapKey();
+// L.printMapKey();
+L.length()
