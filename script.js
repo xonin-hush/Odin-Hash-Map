@@ -185,6 +185,19 @@ class Hashmap {
     }
     console.log(keysArray);
   }
+  values() {
+    let valuesArray = [];
+    let temp = "";
+    for (let i in this.buckets) {
+      temp = this.buckets[i].head;
+      valuesArray.push(temp.value);
+      while (temp.next != null) {
+        temp = temp.next;
+        valuesArray.push(temp.value);
+      }
+    }
+    console.log(valuesArray);
+  }
   clear() {
     for (let i in this.buckets) {
       this.buckets[i].head = null;
@@ -235,4 +248,5 @@ L.set("lion", "golden");
 L.length();
 // L.clear();
 L.keys()
+L.values()
 // L.printMapKey()
